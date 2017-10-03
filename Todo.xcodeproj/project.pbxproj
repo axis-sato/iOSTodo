@@ -14,6 +14,7 @@
 		D3FB686B1F83C77100F15B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68691F83C77100F15B24 /* LaunchScreen.storyboard */; };
 		D3FB68761F83C77100F15B24 /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68751F83C77100F15B24 /* TodoTests.swift */; };
 		D3FB68811F83C77100F15B24 /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68801F83C77100F15B24 /* TodoUITests.swift */; };
+		D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68941F83C9DA00F15B24 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D3FB687C1F83C77100F15B24 /* TodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB68801F83C77100F15B24 /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
 		D3FB68821F83C77100F15B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3FB68941F83C9DA00F15B24 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,8 @@
 		D3FB685F1F83C77100F15B24 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
-				D3FB68601F83C77100F15B24 /* AppDelegate.swift */,
-				D3FB68621F83C77100F15B24 /* ViewController.swift */,
-				D3FB68641F83C77100F15B24 /* Main.storyboard */,
-				D3FB68671F83C77100F15B24 /* Assets.xcassets */,
-				D3FB68691F83C77100F15B24 /* LaunchScreen.storyboard */,
-				D3FB686C1F83C77100F15B24 /* Info.plist */,
+				D3FB68901F83C8D200F15B24 /* Resources */,
+				D3FB688E1F83C8AF00F15B24 /* Sources */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -123,6 +121,51 @@
 				D3FB68821F83C77100F15B24 /* Info.plist */,
 			);
 			path = TodoUITests;
+			sourceTree = "<group>";
+		};
+		D3FB688E1F83C8AF00F15B24 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB68921F83C98400F15B24 /* Common */,
+				D3FB68911F83C97200F15B24 /* UI */,
+				D3FB68621F83C77100F15B24 /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D3FB68901F83C8D200F15B24 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB68671F83C77100F15B24 /* Assets.xcassets */,
+				D3FB68691F83C77100F15B24 /* LaunchScreen.storyboard */,
+				D3FB686C1F83C77100F15B24 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D3FB68911F83C97200F15B24 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB68641F83C77100F15B24 /* Main.storyboard */,
+				D3FB68931F83C9C400F15B24 /* List */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D3FB68921F83C98400F15B24 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB68601F83C77100F15B24 /* AppDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D3FB68931F83C9C400F15B24 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D3FB68941F83C9DA00F15B24 /* ListViewController.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +304,7 @@
 			files = (
 				D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */,
 				D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */,
+				D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Todo/Info.plist;
+				INFOPLIST_FILE = Todo/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.c8112002.Todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,7 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Todo/Info.plist;
+				INFOPLIST_FILE = Todo/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.c8112002.Todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
