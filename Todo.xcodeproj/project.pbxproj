@@ -15,6 +15,7 @@
 		D3FB68761F83C77100F15B24 /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68751F83C77100F15B24 /* TodoTests.swift */; };
 		D3FB68811F83C77100F15B24 /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68801F83C77100F15B24 /* TodoUITests.swift */; };
 		D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68941F83C9DA00F15B24 /* ListViewController.swift */; };
+		D3FB68971F83DDD600F15B24 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68961F83DDD600F15B24 /* Todo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D3FB68801F83C77100F15B24 /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
 		D3FB68821F83C77100F15B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3FB68941F83C9DA00F15B24 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		D3FB68961F83DDD600F15B24 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D3FB68601F83C77100F15B24 /* AppDelegate.swift */,
+				D3FB68961F83DDD600F15B24 /* Todo.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */,
 				D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */,
 				D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */,
+				D3FB68971F83DDD600F15B24 /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

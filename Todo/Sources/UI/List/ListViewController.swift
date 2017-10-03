@@ -23,6 +23,12 @@ class ListViewController: UIViewController {
         return searchBar
     }()
     
+    private var todos: [Todo] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +39,8 @@ class ListViewController: UIViewController {
 private typealias Event = ListViewController
 extension Event {
     @IBAction func didTapAddition(_ sender: Any) {
-        print("add todo")
+        let todo = Todo(title: "title\(todos.count)")
+        todos.append(todo)
     }
 }
 
@@ -51,7 +58,7 @@ extension TableViewDelegate: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("delete")
+            todos.remove(at: indexPath.row)
         }
     }
 }
@@ -59,12 +66,12 @@ extension TableViewDelegate: UITableViewDelegate {
 private typealias TableViewDataSource = ListViewController
 extension TableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return todos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = "foo"
+        cell.textLabel?.text = todos[indexPath.row].title
         return cell
     }
 }
