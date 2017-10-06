@@ -61,6 +61,11 @@ extension TableViewDelegate: UITableViewDelegate {
             todos.remove(at: indexPath.row)
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo = todos[indexPath.row]
+        let vc = DetailViewController.getSelf(todo: todo)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 private typealias TableViewDataSource = ListViewController

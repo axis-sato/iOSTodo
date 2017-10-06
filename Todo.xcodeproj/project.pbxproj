@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3841DC91F87B9B200A6BEEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */; };
 		D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68601F83C77100F15B24 /* AppDelegate.swift */; };
 		D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68621F83C77100F15B24 /* ViewController.swift */; };
 		D3FB68661F83C77100F15B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68641F83C77100F15B24 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D3FB685D1F83C77100F15B24 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB68601F83C77100F15B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FB68621F83C77100F15B24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3841DCA1F87B9BF00A6BEEA /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		D3FB68541F83C77100F15B24 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 			children = (
 				D3FB68641F83C77100F15B24 /* Main.storyboard */,
 				D3FB68931F83C9C400F15B24 /* List */,
+				D3841DCA1F87B9BF00A6BEEA /* Detail */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -307,6 +318,7 @@
 			files = (
 				D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */,
 				D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */,
+				D3841DC91F87B9B200A6BEEA /* DetailViewController.swift in Sources */,
 				D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */,
 				D3FB68971F83DDD600F15B24 /* Todo.swift in Sources */,
 			);

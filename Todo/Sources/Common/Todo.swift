@@ -16,7 +16,7 @@ struct Todo {
     var status = Status.todo
     var title: String
     
-    init(title: String, description: String) {
+    init(title: String) {
         self.title = title
     }
 }
