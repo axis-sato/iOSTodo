@@ -39,8 +39,33 @@ class ListViewController: UIViewController {
 private typealias Event = ListViewController
 extension Event {
     @IBAction func didTapAddition(_ sender: Any) {
-        let todo = Todo(title: "title\(todos.count)")
-        todos.append(todo)
+        showAdditionalAlertView()
+    }
+    
+    private func showAdditionalAlertView() {
+        let alert = UIAlertController(title: "TODO追加", message: "タイトルを入力してください。", preferredStyle: .alert)
+        
+        // OKボタンの設定
+        let okAction = UIAlertAction(title: "追加", style: .default, handler: {
+            (action:UIAlertAction!) -> Void in
+            
+            if let text = alert.textFields?.first?.text {
+                let todo = Todo(title: text)
+                self.todos.append(todo)
+            }
+        })
+        alert.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
+            textField.placeholder = "タイトル"
+        })
+        
+        alert.view.setNeedsLayout()
+        // アラートを画面に表示
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
