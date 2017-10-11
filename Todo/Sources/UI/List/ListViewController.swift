@@ -25,10 +25,29 @@ class ListViewController: UIViewController {
     
     private var todos: [Todo] = [] {
         didSet {
+            filteredTodos = filterTodos(baseTodo: todos, query: query)
+        }
+    }
+    private var filteredTodos: [Todo] = [] {
+        didSet {
             tableView.reloadData()
         }
     }
-    
+    private var query: String = "" {
+        didSet {
+            filteredTodos = filterTodos(baseTodo: todos, query: query)
+        }
+    }
+    private func filterTodos(baseTodo: [Todo], query: String) -> [Todo] {
+        if (query.isEmpty) {
+            return todos
+        }
+        return baseTodo.filter() {todo in
+            return todo.title.contains(query)
+        }
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,7 +91,7 @@ extension Event {
 private typealias SearchBarDelegate = ListViewController
 extension SearchBarDelegate: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        query = searchText
     }
 }
 
@@ -83,11 +102,12 @@ extension TableViewDelegate: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            // TODO: indexPath.rowはfilteredTodosの値なので正しいTodoが削除できない
             todos.remove(at: indexPath.row)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let todo = todos[indexPath.row]
+        let todo = filteredTodos[indexPath.row]
         let vc = DetailViewController.getSelf(todo: todo)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -96,12 +116,13 @@ extension TableViewDelegate: UITableViewDelegate {
 private typealias TableViewDataSource = ListViewController
 extension TableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count
+//        return todos.count
+        return filteredTodos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = todos[indexPath.row].title
+        cell.textLabel?.text = filteredTodos[indexPath.row].title
         return cell
     }
 }
