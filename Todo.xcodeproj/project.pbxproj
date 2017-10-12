@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D3841DC91F87B9B200A6BEEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */; };
+		D3841DCE1F8FB73500A6BEEA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */; };
+		D3841DCF1F8FB73500A6BEEA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCD1F8FB73500A6BEEA /* Realm.framework */; };
 		D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68601F83C77100F15B24 /* AppDelegate.swift */; };
 		D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68621F83C77100F15B24 /* ViewController.swift */; };
 		D3FB68661F83C77100F15B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68641F83C77100F15B24 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D3841DCD1F8FB73500A6BEEA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D3FB685D1F83C77100F15B24 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB68601F83C77100F15B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FB68621F83C77100F15B24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3841DCE1F8FB73500A6BEEA /* RealmSwift.framework in Frameworks */,
+				D3841DCF1F8FB73500A6BEEA /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +94,15 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		D3841DCB1F8FB73500A6BEEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3841DCD1F8FB73500A6BEEA /* Realm.framework */,
+				D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D3FB68541F83C77100F15B24 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +110,7 @@
 				D3FB68741F83C77100F15B24 /* TodoTests */,
 				D3FB687F1F83C77100F15B24 /* TodoUITests */,
 				D3FB685E1F83C77100F15B24 /* Products */,
+				D3841DCB1F8FB73500A6BEEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +208,7 @@
 				D3FB68591F83C77100F15B24 /* Sources */,
 				D3FB685A1F83C77100F15B24 /* Frameworks */,
 				D3FB685B1F83C77100F15B24 /* Resources */,
+				D3841DD01F8FB75C00A6BEEA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -310,6 +327,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D3841DD01F8FB75C00A6BEEA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D3FB68591F83C77100F15B24 /* Sources */ = {
@@ -487,6 +524,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Todo/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.c8112002.Todo;
@@ -501,6 +542,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Todo/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.c8112002.Todo;
