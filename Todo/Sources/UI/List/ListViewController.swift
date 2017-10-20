@@ -17,33 +17,21 @@ class ListViewController: UIViewController {
         }
     }
     
+    lazy var todoModel: TodoModel = {
+        let model = TodoModel()
+        model.delegate = self
+        return model
+    }()
+    
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = self
         return searchBar
     }()
     
-    private var todos: [Todo] = [] {
-        didSet {
-            filteredTodos = filterTodos(baseTodo: todos, query: query)
-        }
-    }
-    private var filteredTodos: [Todo] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
     private var query: String = "" {
         didSet {
-            filteredTodos = filterTodos(baseTodo: todos, query: query)
-        }
-    }
-    private func filterTodos(baseTodo: [Todo], query: String) -> [Todo] {
-        if (query.isEmpty) {
-            return todos
-        }
-        return baseTodo.filter() {todo in
-            return todo.title.contains(query)
+            self.todoModel.titleFilter = query
         }
     }
 
@@ -69,8 +57,7 @@ extension Event {
             (action:UIAlertAction!) -> Void in
             
             if let text = alert.textFields?.first?.text {
-                let todo = Todo(title: text)
-                self.todos.append(todo)
+                self.todoModel.addTodo(title: text)
             }
         })
         alert.addAction(okAction)
@@ -102,12 +89,12 @@ extension TableViewDelegate: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // TODO: indexPath.rowはfilteredTodosの値なので正しいTodoが削除できない
-            todos.remove(at: indexPath.row)
+            let todo = self.todoModel.todos[indexPath.row]
+            self.todoModel.deleteTodo(todo: todo)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let todo = filteredTodos[indexPath.row]
+        let todo = todoModel.todos[indexPath.row]
         let vc = DetailViewController.getSelf(todo: todo)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -116,13 +103,20 @@ extension TableViewDelegate: UITableViewDelegate {
 private typealias TableViewDataSource = ListViewController
 extension TableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return todos.count
-        return filteredTodos.count
+        return todoModel.todos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = filteredTodos[indexPath.row].title
-        return cell
+        cell.textLabel?.text = todoModel.todos[indexPath.row].title
+return cell
+    }
+}
+
+// MARK - TodoModelDelegate
+extension ListViewController: TodoModelDelegate {
+    func todoDidChange() {
+        print("todoDidChange")
+        tableView.reloadData()
     }
 }
