@@ -9,36 +9,34 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var todo: Todo!
+    // MARK: - IBOutlet
+    @IBOutlet weak var statusSwitch: UISwitch!
     
-    static func getSelf(todo: Todo) -> DetailViewController {
+    // MARK: - property
+    var todo: Todo!
+    var todoModel: TodoModel!
+    
+    // MARK: - initFromStoryboard
+    static func initFromStoryboard(todo: Todo, todoModel: TodoModel) -> DetailViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "Detail") as! DetailViewController
         vc.todo = todo
+        vc.todoModel = todoModel
         return vc
     }
     
-
+    // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = todo.title
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        statusSwitch.isOn = todo.status == Todo.Status.done
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - IBAction
+    @IBAction func didChangeStatusSwitch(_ sender: Any) {
+        let s = sender as! UISwitch
+        let newStatus = Todo.Status.initFromTodoSwitch(isOn: s.isOn)
+        todoModel.changeStatus(todo: todo, status: newStatus)
     }
-    */
-
 }

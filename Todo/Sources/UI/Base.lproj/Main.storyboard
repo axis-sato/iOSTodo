@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,9 +53,35 @@
                     <view key="view" contentMode="scaleToFill" id="JCt-4i-1lz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="g3N-Km-LzW">
+                                <rect key="frame" x="119.5" y="120" width="136.5" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fae-FX-pTg">
+                                        <rect key="frame" x="0.0" y="0.0" width="47.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RR4-z2-WHv">
+                                        <rect key="frame" x="87.5" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="didChangeStatusSwitch:" destination="Rfu-bA-fFd" eventType="valueChanged" id="1qA-Cj-a0A"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g3N-Km-LzW" firstAttribute="centerX" secondItem="JCt-4i-1lz" secondAttribute="centerX" id="6Gu-3D-Y45"/>
+                            <constraint firstItem="g3N-Km-LzW" firstAttribute="top" secondItem="dPO-yp-Eci" secondAttribute="top" constant="100" id="Qzw-Op-6Fm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dPO-yp-Eci"/>
                     </view>
+                    <connections>
+                        <outlet property="statusSwitch" destination="RR4-z2-WHv" id="FJJ-LE-UYr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8Y-PX-gtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

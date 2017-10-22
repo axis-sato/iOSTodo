@@ -95,7 +95,10 @@ extension TableViewDelegate: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let todo = todoModel.todos[indexPath.row]
-        let vc = DetailViewController.getSelf(todo: todo)
+        let vc = DetailViewController.initFromStoryboard(
+            todo: todo,
+            todoModel: todoModel
+        )
         navigationController?.pushViewController(vc, animated: true)
     }
 }

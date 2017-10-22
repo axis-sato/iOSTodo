@@ -14,6 +14,10 @@ class Todo: Object {
     enum Status: String {
         case todo = "todo"
         case done = "done"
+        
+        static func initFromTodoSwitch(isOn: Bool) -> Status {
+            return isOn ? .done : .todo
+        }
     }
     
     @objc dynamic var id = ""
@@ -98,6 +102,12 @@ class TodoModel {
     func deleteTodo(todo: Todo) {
         try! realm.write {
             realm.delete(todo)
+        }
+    }
+    
+    func changeStatus(todo: Todo, status: Todo.Status) {
+        try! realm.write {
+            todo.status = status
         }
     }
     
