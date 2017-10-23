@@ -18,20 +18,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mGN-po-25C">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="575"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yB6-Jn-MDj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
+                                <segments>
+                                    <segment title="todo"/>
+                                    <segment title="done"/>
+                                    <segment title="all"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeStatus:" destination="BYZ-38-t0r" eventType="valueChanged" id="WuA-Ox-SY8"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mGN-po-25C" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="J8z-8o-2IW"/>
                             <constraint firstItem="mGN-po-25C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LFn-kJ-089"/>
-                            <constraint firstItem="mGN-po-25C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wjk-XE-0jt"/>
+                            <constraint firstItem="mGN-po-25C" firstAttribute="top" secondItem="yB6-Jn-MDj" secondAttribute="bottom" id="bUD-TO-UQn"/>
                             <constraint firstItem="mGN-po-25C" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ffs-Mo-igW"/>
+                            <constraint firstItem="yB6-Jn-MDj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gsR-5S-taq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yB6-Jn-MDj" secondAttribute="trailing" id="h9o-Va-04x"/>
+                            <constraint firstItem="yB6-Jn-MDj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pv5-Xh-ZdZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="7zO-wV-Ea7">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="597-Ns-Cr1">
                             <connections>
                                 <action selector="didTapAddition:" destination="BYZ-38-t0r" id="vcz-7T-bWE"/>

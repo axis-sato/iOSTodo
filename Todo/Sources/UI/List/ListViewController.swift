@@ -41,6 +41,12 @@ class ListViewController: UIViewController {
         
         navigationItem.titleView = searchBar
     }
+    
+    @IBAction func didChangeStatus(_ sender: Any) {
+        let s = sender as! UISegmentedControl
+        let status: [TodoModel.StatusFilter] = [.todo, .done, .all]
+        todoModel.statusFilter = status[s.selectedSegmentIndex]
+    }
 }
 
 private typealias Event = ListViewController

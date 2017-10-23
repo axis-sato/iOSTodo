@@ -47,19 +47,31 @@ class Todo: Object {
 }
 
 class TodoModel {
+    enum StatusFilter: String {
+        case todo = "todo"
+        case done = "done"
+        case all
+    }
     let realm = try! Realm()
     var todos: [Todo]
     var titleFilter: String = "" {
         didSet {
-            filterTodo(query: titleFilter)
+            filterTodo(query: titleFilter, status: statusFilter)
         }
     }
+    var statusFilter: StatusFilter = .todo {
+        didSet {
+            filterTodo(query: titleFilter, status: statusFilter)
+        }
+    }
+    
     var notificationToken: NotificationToken? = nil
     weak var delegate: TodoModelDelegate?
     
     init() {
         let todoResults = realm.objects(Todo.self)
         todos = Array(todoResults)
+        statusFilter = .todo
         
         notificationToken = todoResults.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
@@ -67,12 +79,21 @@ class TodoModel {
             case .update(_, _, _, _):
                 print("update")
                 if let titleFilter = self?.titleFilter {
-                    self?.filterTodo(query: titleFilter)
+                    self?.filterTodo(query: titleFilter, status: self!.statusFilter)
                 }
             case .error(let error):
                 print(error)
             }
         }
+    }
+    
+    private func filterTodo(query: String, status: StatusFilter) {
+        let todos = query.isEmpty ? realm.objects(Todo.self) : realm.objects(Todo.self)
+            .filter("title CONTAINS '\(query)'")
+        
+        self.todos = status != .all ? Array(todos.filter("_status == '\(status.rawValue)'")) : Array(todos)
+        
+        delegate?.todoDidChange!()
     }
     
     func addTodo(title: String) {
@@ -82,21 +103,6 @@ class TodoModel {
         try! realm.write {
             realm.add(todo)
         }
-    }
-    
-    func filterTodo(query: String) {
-        if query.isEmpty {
-            todos = Array(
-                realm.objects(Todo.self)
-            )
-        } else {
-            todos = Array(
-                realm.objects(Todo.self)
-                    .filter("title CONTAINS '\(query)'")
-            )
-        }
-        
-        delegate?.todoDidChange!()
     }
     
     func deleteTodo(todo: Todo) {
