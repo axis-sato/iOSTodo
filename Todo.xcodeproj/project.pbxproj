@@ -10,6 +10,7 @@
 		D3841DC91F87B9B200A6BEEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */; };
 		D3841DCE1F8FB73500A6BEEA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */; };
 		D3841DCF1F8FB73500A6BEEA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCD1F8FB73500A6BEEA /* Realm.framework */; };
+		D3D8BAEC1F9F849A003CFBEF /* ListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BAEB1F9F849A003CFBEF /* ListViewPresenter.swift */; };
 		D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68601F83C77100F15B24 /* AppDelegate.swift */; };
 		D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68621F83C77100F15B24 /* ViewController.swift */; };
 		D3FB68661F83C77100F15B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68641F83C77100F15B24 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D3841DCD1F8FB73500A6BEEA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		D3D8BAEB1F9F849A003CFBEF /* ListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewPresenter.swift; sourceTree = "<group>"; };
 		D3FB685D1F83C77100F15B24 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB68601F83C77100F15B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FB68621F83C77100F15B24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				D3FB68941F83C9DA00F15B24 /* ListViewController.swift */,
+				D3D8BAEB1F9F849A003CFBEF /* ListViewPresenter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */,
 				D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */,
 				D3841DC91F87B9B200A6BEEA /* DetailViewController.swift in Sources */,
+				D3D8BAEC1F9F849A003CFBEF /* ListViewPresenter.swift in Sources */,
 				D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */,
 				D3FB68971F83DDD600F15B24 /* Todo.swift in Sources */,
 			);

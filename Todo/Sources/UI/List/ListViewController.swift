@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ListView: class {
+    func reloadData()
+}
+
+
 class ListViewController: UIViewController {
+    private(set) lazy var presenter: ListPresenter = ListViewPresenter(view: self)
+    
     // MARK: IBOutlet
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -49,6 +56,12 @@ class ListViewController: UIViewController {
     }
 }
 
+extension ListViewController: ListView {
+    func reloadData() {
+        tableView.reloadData()
+    }
+}
+
 private typealias Event = ListViewController
 extension Event {
     @IBAction func didTapAddition(_ sender: Any) {
@@ -84,7 +97,7 @@ extension Event {
 private typealias SearchBarDelegate = ListViewController
 extension SearchBarDelegate: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        query = searchText
+        presenter.search(searchText: searchText)
     }
 }
 
