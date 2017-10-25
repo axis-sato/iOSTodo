@@ -10,135 +10,90 @@ import UIKit
 
 protocol ListView: class {
     func reloadData()
+    func showDetailView(todo: Todo)
 }
 
 
 class ListViewController: UIViewController {
     private(set) lazy var presenter: ListPresenter = ListViewPresenter(view: self)
     
-    // MARK: IBOutlet
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.dataSource = self
-            tableView.delegate = self
-        }
-    }
+    private lazy var dataSource: ListViewDataSource = .init(presenter: self.presenter)
     
-    lazy var todoModel: TodoModel = {
-        let model = TodoModel()
-        model.delegate = self
-        return model
-    }()
+    // MARK: IBOutlet
+    @IBOutlet weak var tableView: UITableView!
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = self
         return searchBar
     }()
-    
-    private var query: String = "" {
-        didSet {
-            self.todoModel.titleFilter = query
-        }
-    }
+}
 
-
+// MARK: - Life cycle
+extension ListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dataSource.configure(tableView: tableView)
+        
         navigationItem.titleView = searchBar
-    }
-    
-    @IBAction func didChangeStatus(_ sender: Any) {
-        let s = sender as! UISegmentedControl
-        let status: [TodoModel.StatusFilter] = [.todo, .done, .all]
-        todoModel.statusFilter = status[s.selectedSegmentIndex]
     }
 }
 
+
+// MARK: - ListView
 extension ListViewController: ListView {
     func reloadData() {
         tableView.reloadData()
     }
-}
-
-private typealias Event = ListViewController
-extension Event {
-    @IBAction func didTapAddition(_ sender: Any) {
-        showAdditionalAlertView()
-    }
     
-    private func showAdditionalAlertView() {
-        let alert = UIAlertController(title: "TODO追加", message: "タイトルを入力してください。", preferredStyle: .alert)
-        
-        // OKボタンの設定
-        let okAction = UIAlertAction(title: "追加", style: .default, handler: {
-            (action:UIAlertAction!) -> Void in
-            
-            if let text = alert.textFields?.first?.text {
-                self.todoModel.addTodo(title: text)
-            }
-        })
-        alert.addAction(okAction)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        
-        alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
-            textField.placeholder = "タイトル"
-        })
-        
-        alert.view.setNeedsLayout()
-        // アラートを画面に表示
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
-private typealias SearchBarDelegate = ListViewController
-extension SearchBarDelegate: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.search(searchText: searchText)
-    }
-}
-
-private typealias TableViewDelegate = ListViewController
-extension TableViewDelegate: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let todo = self.todoModel.todos[indexPath.row]
-            self.todoModel.deleteTodo(todo: todo)
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let todo = todoModel.todos[indexPath.row]
+    func showDetailView(todo: Todo) {
         let vc = DetailViewController.initFromStoryboard(
             todo: todo,
-            todoModel: todoModel
+            listPresenter: presenter
         )
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-private typealias TableViewDataSource = ListViewController
-extension TableViewDataSource: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoModel.todos.count
+// MARK: - IBAction
+extension ListViewController {
+    @IBAction func didTapAddition(_ sender: Any) {
+        func showAdditionalAlertView() {
+            let alert = UIAlertController(title: "TODO追加", message: "タイトルを入力してください。", preferredStyle: .alert)
+            
+            // OKボタンの設定
+            let okAction = UIAlertAction(title: "追加", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+                
+                if let text = alert.textFields?.first?.text {
+                    self.presenter.add(title: text)
+                }
+            })
+            alert.addAction(okAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            
+            alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
+                textField.placeholder = "タイトル"
+            })
+            
+            alert.view.setNeedsLayout()
+            self.present(alert, animated: true, completion: nil)
+        }
+        showAdditionalAlertView()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = todoModel.todos[indexPath.row].title
-return cell
+    @IBAction func didChangeStatus(_ sender: Any) {
+        let s = sender as! UISegmentedControl
+        presenter.changeFilterStatus(at: s.selectedSegmentIndex)
     }
 }
 
-// MARK - TodoModelDelegate
-extension ListViewController: TodoModelDelegate {
-    func todoDidChange() {
-        print("todoDidChange")
-        tableView.reloadData()
+// MARK: - SearchBarDelegate
+extension ListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.search(searchText: searchText)
     }
 }

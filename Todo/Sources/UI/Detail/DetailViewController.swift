@@ -8,35 +8,47 @@
 
 import UIKit
 
+protocol DetailView: class {
+    
+}
+
 class DetailViewController: UIViewController {
-    // MARK: - IBOutlet
+    // MARK: IBOutlet
     @IBOutlet weak var statusSwitch: UISwitch!
     
-    // MARK: - property
-    var todo: Todo!
-    var todoModel: TodoModel!
+    // MARK: property
+    private var presenter: DetailPresenter!
     
-    // MARK: - initFromStoryboard
-    static func initFromStoryboard(todo: Todo, todoModel: TodoModel) -> DetailViewController {
+    // MARK: initFromStoryboard
+    static func initFromStoryboard(todo: Todo, listPresenter: ListPresenter) -> DetailViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "Detail") as! DetailViewController
-        vc.todo = todo
-        vc.todoModel = todoModel
+        vc.presenter = DetailViewPresenter(
+            view: vc,
+            todo: todo,
+            listPresenter: listPresenter)
         return vc
     }
-    
-    // MARK: - life cycle
+}
+
+// MARK: - Life cycle
+extension DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.title = todo.title
-        statusSwitch.isOn = todo.status == Todo.Status.done
+        
+        navigationItem.title = presenter.title
+        statusSwitch.isOn = presenter.isStatuSwitchOn
     }
-    
-    // MARK: - IBAction
+}
+
+// MARK: - IBAction
+extension DetailViewController {
     @IBAction func didChangeStatusSwitch(_ sender: Any) {
         let s = sender as! UISwitch
-        let newStatus = Todo.Status.initFromTodoSwitch(isOn: s.isOn)
-        todoModel.changeStatus(todo: todo, status: newStatus)
+        presenter.changeStatus(isOn: s.isOn)
     }
+}
+
+extension DetailViewController: DetailView {
+    
 }
