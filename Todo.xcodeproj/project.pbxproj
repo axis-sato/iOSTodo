@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30D2AA01FA75B9800C9C9AA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCD1F8FB73500A6BEEA /* Realm.framework */; };
+		D30D2AA11FA75B9800C9C9AA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */; };
 		D3841DC91F87B9B200A6BEEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3841DC81F87B9B200A6BEEA /* DetailViewController.swift */; };
 		D3841DCE1F8FB73500A6BEEA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCC1F8FB73500A6BEEA /* RealmSwift.framework */; };
 		D3841DCF1F8FB73500A6BEEA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3841DCD1F8FB73500A6BEEA /* Realm.framework */; };
 		D3D8BAEC1F9F849A003CFBEF /* ListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BAEB1F9F849A003CFBEF /* ListViewPresenter.swift */; };
 		D3D8BAEE1FA0B738003CFBEF /* ListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BAED1FA0B738003CFBEF /* ListViewDataSource.swift */; };
 		D3D8BAF01FA0C9C8003CFBEF /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BAEF1FA0C9C8003CFBEF /* DetailViewPresenter.swift */; };
+		D3D8BAF21FA228AC003CFBEF /* ListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BAF11FA228AC003CFBEF /* ListPresenterTests.swift */; };
 		D3FB68611F83C77100F15B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68601F83C77100F15B24 /* AppDelegate.swift */; };
 		D3FB68631F83C77100F15B24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68621F83C77100F15B24 /* ViewController.swift */; };
 		D3FB68661F83C77100F15B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68641F83C77100F15B24 /* Main.storyboard */; };
 		D3FB68681F83C77100F15B24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68671F83C77100F15B24 /* Assets.xcassets */; };
 		D3FB686B1F83C77100F15B24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FB68691F83C77100F15B24 /* LaunchScreen.storyboard */; };
-		D3FB68761F83C77100F15B24 /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68751F83C77100F15B24 /* TodoTests.swift */; };
 		D3FB68811F83C77100F15B24 /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68801F83C77100F15B24 /* TodoUITests.swift */; };
 		D3FB68951F83C9DA00F15B24 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68941F83C9DA00F15B24 /* ListViewController.swift */; };
 		D3FB68971F83DDD600F15B24 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FB68961F83DDD600F15B24 /* Todo.swift */; };
@@ -48,6 +50,7 @@
 		D3D8BAEB1F9F849A003CFBEF /* ListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewPresenter.swift; sourceTree = "<group>"; };
 		D3D8BAED1FA0B738003CFBEF /* ListViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDataSource.swift; sourceTree = "<group>"; };
 		D3D8BAEF1FA0C9C8003CFBEF /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
+		D3D8BAF11FA228AC003CFBEF /* ListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenterTests.swift; sourceTree = "<group>"; };
 		D3FB685D1F83C77100F15B24 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB68601F83C77100F15B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3FB68621F83C77100F15B24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +59,6 @@
 		D3FB686A1F83C77100F15B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3FB686C1F83C77100F15B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3FB68711F83C77100F15B24 /* TodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3FB68751F83C77100F15B24 /* TodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTests.swift; sourceTree = "<group>"; };
 		D3FB68771F83C77100F15B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3FB687C1F83C77100F15B24 /* TodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3FB68801F83C77100F15B24 /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30D2AA01FA75B9800C9C9AA /* Realm.framework in Frameworks */,
+				D30D2AA11FA75B9800C9C9AA /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +147,8 @@
 		D3FB68741F83C77100F15B24 /* TodoTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3FB68751F83C77100F15B24 /* TodoTests.swift */,
 				D3FB68771F83C77100F15B24 /* Info.plist */,
+				D3D8BAF11FA228AC003CFBEF /* ListPresenterTests.swift */,
 			);
 			path = TodoTests;
 			sourceTree = "<group>";
@@ -377,7 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3FB68761F83C77100F15B24 /* TodoTests.swift in Sources */,
+				D3D8BAF21FA228AC003CFBEF /* ListPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -554,6 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -573,6 +579,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TodoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.c8112002.TodoTests;
@@ -589,6 +599,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TodoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.c8112002.TodoTests;

@@ -49,6 +49,7 @@ extension DetailViewController {
     }
 }
 
+// MARK: - DetailView
 extension DetailViewController: DetailView {
     
 }
