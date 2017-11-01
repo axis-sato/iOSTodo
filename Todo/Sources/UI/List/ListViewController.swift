@@ -15,7 +15,10 @@ protocol ListView: class {
 
 
 class ListViewController: UIViewController {
-    private(set) lazy var presenter: ListPresenter = ListViewPresenter(view: self)
+    private(set) lazy var presenter: ListPresenter = ListViewPresenter(
+        view: self,
+        realm: (UIApplication.shared.delegate as! AppDelegate).realm
+    )
     
     private lazy var dataSource: ListViewDataSource = .init(presenter: self.presenter)
     

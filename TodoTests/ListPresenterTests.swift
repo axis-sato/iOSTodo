@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RealmSwift
 @testable import Todo
 
 class ListViewMock: ListView {
@@ -25,12 +26,28 @@ class ListViewMock: ListView {
 class ListPresenterTests: XCTestCase {
     var listView: ListViewMock!
     var listPresenter: ListPresenter!
+    lazy var foo: String = {
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
+        return "foo"
+    }()
     
     override func setUp() {
         super.setUp()
         
+        print(foo)
+//        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
+        var config = Realm.Configuration()
+        config.inMemoryIdentifier = self.name
+        let realm = try! Realm(configuration: config)
+        try! realm.write {
+            realm.deleteAll()
+        }
+        
         listView = ListViewMock()
-        listPresenter = ListViewPresenter(view: listView)
+        listPresenter = ListViewPresenter(
+            view: listView,
+            realm: realm
+        )
         listView.presenter = listPresenter
     }
     
@@ -61,5 +78,28 @@ class ListPresenterTests: XCTestCase {
         
         waitForExpectations(timeout: 1, handler: nil)
     }
+    
+    func testAdd() {
+        let firstTitle = "first todo"
+        let secondTitle = "second todo"
+        
+        listPresenter.add(title: firstTitle)
+        listPresenter.add(title: secondTitle)
+        
+        let firstTodo = listPresenter.todo(at: 0)
+        XCTAssertEqual(firstTodo.title, firstTitle)
+        
+//        let secondTodo = listPresenter.todo(at: 1)
+//        XCTAssertEqual(secondTodo.title, secondTitle)
+    }
+    
+//    func testNumberOfTodos() {
+//        let range = (0...3)
+//        for i in range {
+//            listPresenter.add(title: "\(i) todo")
+//        }
+//                
+//        XCTAssertEqual(listPresenter.numberOfTodos, range.count)
+//    }
     
 }

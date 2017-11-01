@@ -21,7 +21,7 @@ protocol ListPresenter: class {
 
 final class ListViewPresenter {
     private weak var view: ListView?
-    private let realm = try! Realm()
+    private let realm: Realm
     private var notificationToken: NotificationToken!
     private lazy var todos: [Todo] = Array(realm.objects(Todo.self))
     private var query: String = "" {
@@ -35,9 +35,10 @@ final class ListViewPresenter {
         }
     }
     
-    init(view: ListView) {
+    init(view: ListView, realm: Realm) {
         self.view = view
-
+        self.realm = realm
+        
         self.initRealmNotification()
     }
     
